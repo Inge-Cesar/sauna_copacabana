@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sauna Copacabana Sistema</title>
+  <meta name="description" content="Maqueta navegable del sistema de Sauna Copacabana: recepción, casilleros, cafetería, cocina, reservas, salida, inventario y caja.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-vapor" viewBox="0 0 24 24"><path d="M8 3c-1.5 2 1.5 3 0 5s1.5 3 0 5"/><path d="M12 3c-1.5 2 1.5 3 0 5s1.5 3 0 5"/><path d="M16 3c-1.5 2 1.5 3 0 5s1.5 3 0 5"/><path d="M4 17h16v4H4z"/></symbol>
+    <symbol id="i-panel" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></symbol>
+    <symbol id="i-recepcion" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></symbol>
+    <symbol id="i-casillero" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 3v18M8 9v2M16 9v2"/></symbol>
+    <symbol id="i-cafe" viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3M12 3v3"/></symbol>
+    <symbol id="i-cocina" viewBox="0 0 24 24"><path d="M6 13a6 6 0 1 1 12 0v5H6z"/><path d="M4 21h16M12 4V2"/></symbol>
+    <symbol id="i-calendario" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-salida" viewBox="0 0 24 24"><path d="M14 4h5v16h-5"/><path d="M10 8l-4 4 4 4M6 12h10"/></symbol>
+    <symbol id="i-caja" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 11h18M7 4h10l1 3H6z"/></symbol>
+    <symbol id="i-inventario" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></symbol>
+    <symbol id="i-estrella" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+    <symbol id="i-buscar" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v1M14 20h1M18 18h3v3"/></symbol>
+    <symbol id="i-alerta" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v4M12 17v.5"/></symbol>
+    <symbol id="i-mas" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></symbol>
+    <symbol id="i-volver" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-luna" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+  </svg>
+
+  <div class="app">
+    <aside class="barra-lateral" id="barra-lateral" aria-label="Menú del sistema">
+      <a class="marca-logo" href="index.html"><span class="sello"><svg class="icono"><use href="#i-vapor"/></svg></span>Sauna Copacabana</a>
+      <button class="nav-item" data-vista="panel"><svg class="icono"><use href="#i-panel"/></svg>Panel</button>
+      <div class="nav-grupo">Atención</div>
+      <button class="nav-item" data-vista="recepcion"><svg class="icono"><use href="#i-recepcion"/></svg>Recepción</button>
+      <button class="nav-item" data-vista="casilleros"><svg class="icono"><use href="#i-casillero"/></svg>Casilleros</button>
+      <button class="nav-item" data-vista="salida"><svg class="icono"><use href="#i-salida"/></svg>Salida y cobro<span class="contador" id="cont-dentro">0</span></button>
+      <div class="nav-grupo">Cafetería</div>
+      <button class="nav-item" data-vista="cafeteria"><svg class="icono"><use href="#i-cafe"/></svg>Punto de venta</button>
+      <button class="nav-item" data-vista="cocina"><svg class="icono"><use href="#i-cocina"/></svg>Cocina<span class="contador" id="cont-cocina">0</span></button>
+      <div class="nav-grupo">Gestión</div>
+      <button class="nav-item" data-vista="reservas"><svg class="icono"><use href="#i-calendario"/></svg>Reservas</button>
+      <button class="nav-item" data-vista="inventario"><svg class="icono"><use href="#i-inventario"/></svg>Inventario</button>
+      <button class="nav-item" data-vista="caja"><svg class="icono"><use href="#i-caja"/></svg>Caja y reportes</button>
+      <button class="nav-item" data-vista="clientes"><svg class="icono"><use href="#i-estrella"/></svg>Clientes</button>
+      <div class="usuario"><span class="avatar">MR</span><div><strong>María Rojas</strong><div class="suave">Recepción · Turno tarde</div></div></div>
+    </aside>
+
+    <div class="principal">
+      <div class="aviso-mockup">Maqueta de demostración · datos de ejemplo · nada se guarda · <a href="index.html">volver a la propuesta</a></div>
+      <header class="barra-superior">
+        <button class="selector-tema boton-menu" type="button" id="boton-menu" aria-label="Abrir menú"><svg class="icono icono-sm"><use href="#i-menu"/></svg></button>
+        <h1 id="titulo-vista">Panel</h1>
+        <div class="derecha">
+          <label class="buscador"><svg class="icono icono-sm"><use href="#i-buscar"/></svg><span class="oculto-accesible">Buscar</span><input type="search" placeholder="Buscar cliente, manilla o casillero" id="buscador-global"></label>
+          <span class="chip chip-neutro"><svg class="icono icono-sm"><use href="#i-reloj"/></svg><span id="reloj">Hoy 15:20</span></span>
+          <button class="selector-tema" type="button" data-cambiar-tema aria-label="Cambiar entre tema claro y oscuro"><svg class="icono icono-sm"><use href="#i-luna"/></svg></button>
+        </div>
+      </header>
+
+      <main class="contenido">
+        <!-- PANEL -->
+        <section class="vista" id="v-panel" data-titulo="Panel">
+          <div class="indicadores" id="indicadores"></div>
+          <div class="dos-columnas">
+            <div class="tarjeta">
+              <div class="cabecera-tarjeta"><h2>Ingresos y ventas de hoy (por hora)</h2><div class="leyenda"><span><i style="background:var(--lago)"></i>Clientes</span><span><i style="background:var(--brasa)"></i>Ventas cafetería</span></div></div>
+              <div class="grafico-barras" id="grafico-horas" role="img" aria-label="Clientes y ventas por hora del día"></div>
+            </div>
+            <div class="tarjeta">
+              <div class="cabecera-tarjeta"><h2>Alertas</h2><span class="chip chip-alerta" id="n-alertas"></span></div>
+              <div class="lista-simple" id="lista-alertas"></div>
+            </div>
+          </div>
+          <div class="dos-columnas">
+            <div class="tarjeta">
+              <div class="cabecera-tarjeta"><h2>Clientes dentro</h2><button class="boton boton-borde boton-pequeno" data-ir="salida">Ver todos</button></div>
+              <div class="tabla-envoltura"><table class="tabla"><thead><tr><th>Manilla</th><th>Cliente</th><th>Casillero</th><th>Tiempo</th><th class="derecha">Consumo</th></tr></thead><tbody id="tabla-dentro-panel"></tbody></table></div>
+            </div>
+            <div class="tarjeta">
+              <div class="cabecera-tarjeta"><h2>Próximas reservas</h2><button class="boton boton-borde boton-pequeno" data-ir="reservas">Agenda</button></div>
+              <div class="lista-simple" id="lista-reservas-panel"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RECEPCIÓN -->
+        <section class="vista" id="v-recepcion" data-titulo="Recepción · nuevo ingreso">
+          <div class="dos-columnas">
+            <form class="tarjeta" id="form-ingreso" style="display:grid;gap:16px">
+              <div class="cabecera-tarjeta" style="margin:0"><h2>Datos del cliente</h2><span class="chip chip-lago" id="aforo-recepcion"></span></div>
+              <div class="formulario-rejilla">
+                <div class="campo"><label for="f-ci">CI / documento</label><input id="f-ci" value="6845123" required></div>
+                <div class="campo"><label for="f-tel">Celular</label><input id="f-tel" value="71234567"></div>
+                <div class="campo completo"><label for="f-nombre">Nombre completo</label><input id="f-nombre" value="Luis Fernando Quispe" required></div>
+                <div class="campo"><label for="f-genero">Vestidor</label><select id="f-genero"><option value="V">Varones</option><option value="D">Damas</option></select></div>
+                <div class="campo"><label for="f-manilla">Manilla (escanee el QR)</label><input id="f-manilla" value="M-1042"></div>
+              </div>
+              <div>
+                <div class="campo" style="margin-bottom:6px"><label>Tipo de entrada</label></div>
+                <div class="opciones-entrada" id="opciones-entrada"></div>
+              </div>
+              <div class="tarjeta" style="background:var(--superficie-2);box-shadow:none;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+                <svg class="icono" style="color:var(--lago)"><use href="#i-casillero"/></svg>
+                <div style="flex:1;min-width:160px"><strong id="casillero-asignado">Casillero —</strong><div class="suave" style="font-size:13px">Se asigna el primer casillero libre del vestidor</div></div>
+                <button type="button" class="boton boton-borde boton-pequeno" id="btn-otro-casillero">Elegir otro</button>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+                <div><span class="suave">A cobrar ahora</span><div class="total" style="margin:0" id="total-ingreso">Bs 0</div></div>
+                <button class="boton boton-primario" type="submit"><svg class="icono icono-sm"><use href="#i-check"/></svg>Registrar ingreso</button>
+              </div>
+            </form>
+            <div class="tarjeta">
+              <div class="cabecera-tarjeta"><h2>Últimos ingresos</h2></div>
+              <div class="lista-simple" id="ultimos-ingresos"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CASILLEROS -->
+        <section class="vista" id="v-casilleros" data-titulo="Casilleros">
+          <div class="tarjeta" style="display:grid;gap:14px">
+            <div class="cabecera-tarjeta" style="margin:0;flex-wrap:wrap">
+              <div class="filtros" id="filtros-casilleros">
+                <button class="filtro activo" data-filtro="V">Varones</button>
+                <button class="filtro" data-filtro="D">Damas</button>
+              </div>
+              <div class="leyenda-casilleros">
+                <span><span class="chip chip-ok">Libre</span></span><span><span class="chip chip-lago">Ocupado</span></span><span><span class="chip chip-alerta">Tiempo excedido</span></span><span><span class="chip chip-neutro">Mantenimiento</span></span>
+              </div>
+            </div>
+            <div class="mapa-casilleros" id="mapa-casilleros"></div>
+          </div>
+          <div class="tarjeta" id="detalle-casillero"><p class="suave" style="margin:0">Toque un casillero para ver su detalle.</p></div>
+        </section>
+
+        <!-- CAFETERÍA -->
+        <section class="vista" id="v-cafeteria" data-titulo="Cafetería y bar">
+          <div class="pos">
+            <div style="display:grid;gap:14px">
+              <div class="categorias" id="categorias"></div>
+              <div class="productos" id="productos"></div>
+            </div>
+            <div class="tarjeta ticket">
+              <div class="cabecera-tarjeta"><h2>Pedido</h2><button class="boton boton-borde boton-pequeno" id="btn-vaciar">Vaciar</button></div>
+              <div class="campo" style="margin-bottom:10px"><label for="pos-manilla">Cliente (manilla)</label><select id="pos-manilla"></select></div>
+              <div id="lineas-pedido"><p class="suave">Toque los productos para agregarlos.</p></div>
+              <div class="total"><span>Total</span><span id="total-pedido">Bs 0</span></div>
+              <div class="metodos" id="metodos"></div>
+              <button class="boton boton-primario" style="width:100%" id="btn-confirmar-pedido">Cargar a la manilla</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- COCINA -->
+        <section class="vista" id="v-cocina" data-titulo="Cocina · comandas">
+          <div class="kanban">
+            <div class="columna-kanban"><h3>Pendiente <span class="chip chip-alerta" id="n-pendiente"></span></h3><div id="k-pendiente" style="display:grid;gap:10px"></div></div>
+            <div class="columna-kanban"><h3>Preparando <span class="chip chip-lago" id="n-preparando"></span></h3><div id="k-preparando" style="display:grid;gap:10px"></div></div>
+            <div class="columna-kanban"><h3>Listo para entregar <span class="chip chip-ok" id="n-listo"></span></h3><div id="k-listo" style="display:grid;gap:10px"></div></div>
+          </div>
+        </section>
+
+        <!-- RESERVAS -->
+        <section class="vista" id="v-reservas" data-titulo="Reservas">
+          <div class="tarjeta">
+            <div class="cabecera-tarjeta" style="flex-wrap:wrap">
+              <h2>Agenda de hoy · viernes 20 de noviembre</h2>
+              <button class="boton boton-primario boton-pequeno" id="btn-nueva-reserva"><svg class="icono icono-sm"><use href="#i-mas"/></svg>Nueva reserva</button>
+            </div>
+            <div class="tabla-envoltura"><div class="agenda" id="agenda"></div></div>
+          </div>
+        </section>
+
+        <!-- SALIDA -->
+        <section class="vista" id="v-salida" data-titulo="Salida y cobro">
+          <div class="dos-columnas">
+            <div class="tarjeta">
+              <div class="cabecera-tarjeta"><h2>Clientes dentro</h2><span class="chip chip-lago" id="n-dentro"></span></div>
+              <div class="tabla-envoltura"><table class="tabla"><thead><tr><th>Manilla</th><th>Cliente</th><th>Casillero</th><th>Entrada</th><th>Tiempo</th><th class="derecha">Cuenta</th><th></th></tr></thead><tbody id="tabla-dentro"></tbody></table></div>
+            </div>
+            <div class="tarjeta" id="cuenta"><p class="suave" style="margin:0">Elija un cliente o escanee su manilla para ver la cuenta.</p></div>
+          </div>
+        </section>
+
+        <!-- INVENTARIO -->
+        <section class="vista" id="v-inventario" data-titulo="Inventario">
+          <div class="tarjeta">
+            <div class="cabecera-tarjeta"><h2>Productos y stock</h2><button class="boton boton-borde boton-pequeno"><svg class="icono icono-sm"><use href="#i-mas"/></svg>Registrar compra</button></div>
+            <div class="tabla-envoltura"><table class="tabla"><thead><tr><th>Producto</th><th>Categoría</th><th class="derecha">Precio</th><th class="derecha">Stock</th><th>Estado</th></tr></thead><tbody id="tabla-inventario"></tbody></table></div>
+          </div>
+        </section>
+
+        <!-- CAJA -->
+        <section class="vista" id="v-caja" data-titulo="Caja y reportes">
+          <div class="indicadores" id="indicadores-caja"></div>
+          <div class="dos-columnas">
+            <div class="tarjeta">
+              <div class="cabecera-tarjeta"><h2>Ventas de la semana</h2><div class="leyenda"><span><i style="background:var(--lago)"></i>Entradas</span><span><i style="background:var(--brasa)"></i>Cafetería</span></div></div>
+              <div class="grafico-barras" id="grafico-semana" role="img" aria-label="Ventas de entradas y cafetería por día de la semana"></div>
+            </div>
+            <div class="tarjeta">
+              <div class="cabecera-tarjeta"><h2>Turno actual</h2><span class="chip chip-ok">Caja abierta 13:00</span></div>
+              <div class="cuenta-resumen" id="resumen-turno"></div>
+              <button class="boton boton-lago" style="width:100%;margin-top:14px" id="btn-cerrar-caja">Cerrar caja del turno</button>
+            </div>
+          </div>
+          <div class="tarjeta">
+            <div class="cabecera-tarjeta"><h2>Productos más vendidos (semana)</h2></div>
+            <div class="tabla-envoltura"><table class="tabla"><thead><tr><th>Producto</th><th class="derecha">Unidades</th><th class="derecha">Ingreso</th></tr></thead><tbody id="tabla-top"></tbody></table></div>
+          </div>
+        </section>
+
+        <!-- CLIENTES -->
+        <section class="vista" id="v-clientes" data-titulo="Clientes y membresías">
+          <div class="tarjeta">
+            <div class="cabecera-tarjeta"><h2>Clientes frecuentes</h2><button class="boton boton-borde boton-pequeno"><svg class="icono icono-sm"><use href="#i-mas"/></svg>Nueva membresía</button></div>
+            <div class="tabla-envoltura"><table class="tabla"><thead><tr><th>Cliente</th><th>CI</th><th>Membresía</th><th class="derecha">Visitas</th><th>Última visita</th><th class="derecha">Gasto total</th></tr></thead><tbody id="tabla-clientes"></tbody></table></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="velo" id="velo" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="tarjeta modal" id="modal"></div>
+  </div>
+  <div class="tostada" id="tostada" role="status" aria-live="polite"></div>
+
+  <script src="js/mockup.js"></script>
+</body>
+</html>

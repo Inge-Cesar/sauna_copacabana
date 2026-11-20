@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sauna Copacabana Propuesta</title>
+  <meta name="description" content="Propuesta de desarrollo de software para Sauna Copacabana: ingresos, casilleros, cafetería, reservas y caja en un solo sistema.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <!-- Íconos (se reutilizan con <use>) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-vapor" viewBox="0 0 24 24"><path d="M8 3c-1.5 2 1.5 3 0 5s1.5 3 0 5"/><path d="M12 3c-1.5 2 1.5 3 0 5s1.5 3 0 5"/><path d="M16 3c-1.5 2 1.5 3 0 5s1.5 3 0 5"/><path d="M4 17h16v4H4z"/></symbol>
+    <symbol id="i-recepcion" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></symbol>
+    <symbol id="i-casillero" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 3v18M8 9v2M16 9v2"/></symbol>
+    <symbol id="i-cafe" viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v3M12 3v3"/></symbol>
+    <symbol id="i-cocina" viewBox="0 0 24 24"><path d="M6 13a6 6 0 1 1 12 0v5H6z"/><path d="M4 21h16M12 4V2"/></symbol>
+    <symbol id="i-calendario" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-salida" viewBox="0 0 24 24"><path d="M14 4h5v16h-5"/><path d="M10 8l-4 4 4 4M6 12h10"/></symbol>
+    <symbol id="i-caja" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 11h18M7 4h10l1 3H6z"/></symbol>
+    <symbol id="i-inventario" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></symbol>
+    <symbol id="i-grafico" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+    <symbol id="i-estrella" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+    <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-flecha" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-luna" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+  </svg>
+
+  <header class="propuesta-cabecera">
+    <div class="contenedor">
+      <a class="marca-logo" href="#inicio"><span class="sello"><svg class="icono"><use href="#i-vapor"/></svg></span>Sauna Copacabana</a>
+      <nav aria-label="Secciones">
+        <a href="#situacion">Situación</a>
+        <a href="#solucion">Solución</a>
+        <a href="#pantallas">Pantallas</a>
+        <a href="#plan">Plan</a>
+        <a href="#inversion">Inversión</a>
+      </nav>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="selector-tema" type="button" data-cambiar-tema aria-label="Cambiar entre tema claro y oscuro"><svg class="icono icono-sm"><use href="#i-luna"/></svg></button>
+        <a class="boton boton-primario boton-pequeno" href="mockup.html">Ver el sistema</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="portada">
+      <div class="contenedor">
+        <div>
+          <span class="etiqueta">Propuesta de desarrollo de software</span>
+          <h1>Todo el sauna en un solo sistema: ingresos, casilleros, cafetería y caja.</h1>
+          <p class="bajada">Cada cliente recibe una manilla con su casillero. Todo lo que consume se carga a esa manilla y, al salir, paga una sola cuenta. Usted ve en tiempo real quién está dentro, qué se vende y cuánto hay en caja.</p>
+          <div class="acciones">
+            <a class="boton boton-primario" href="mockup.html">Recorrer el sistema <svg class="icono icono-sm"><use href="#i-flecha"/></svg></a>
+            <a class="boton boton-borde" href="#solucion">Ver los módulos</a>
+          </div>
+        </div>
+        <div class="portada-visual" aria-label="Ejemplo de lo que muestra el sistema">
+          <div class="vapor"></div>
+          <div class="rejilla">
+            <div class="dato"><span>Clientes dentro</span><strong>38 / 60</strong></div>
+            <div class="dato"><span>Casilleros libres</span><strong>22</strong></div>
+            <div class="dato"><span>Ventas de hoy</span><strong>Bs 4.860</strong></div>
+            <div class="dato"><span>Pedidos en cocina</span><strong>5</strong></div>
+            <div class="dato" style="grid-column:1/-1"><span>Próxima reserva</span><strong>Sauna privado 2 · 15:00</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-alterna" id="situacion">
+      <div class="contenedor">
+        <span class="etiqueta">Situación actual</span>
+        <h2>Lo que hoy cuesta tiempo y dinero</h2>
+        <p class="intro">En un sauna con cafetería y casilleros pasan muchas cosas a la vez. Cuando todo se anota en cuadernos o de memoria, se pierden cobros y no hay forma de saber cómo va el negocio.</p>
+        <div class="rejilla-3">
+          <article class="tarjeta problema"><h3>Consumos que no se cobran</h3><p class="suave">Un jugo o una porción pedida dentro del sauna se olvida al momento de salir.</p></article>
+          <article class="tarjeta problema"><h3>Casilleros y llaves</h3><p class="suave">No se sabe qué casillero está libre, quién lo tiene ni desde qué hora; las llaves se pierden.</p></article>
+          <article class="tarjeta problema"><h3>Caja que no cuadra</h3><p class="suave">Efectivo, QR y tarjeta se mezclan; el cierre del día se hace a mano y tarde.</p></article>
+          <article class="tarjeta problema"><h3>Tiempo excedido</h3><p class="suave">Clientes con entrada de 2 horas que se quedan 4, sin que nadie lo note ni se cobre.</p></article>
+          <article class="tarjeta problema"><h3>Reservas por WhatsApp</h3><p class="suave">Saunas privados, jacuzzi y masajes se agendan en el chat y se cruzan horarios.</p></article>
+          <article class="tarjeta problema"><h3>Sin números del negocio</h3><p class="suave">No se sabe qué día y a qué hora viene más gente ni qué productos dejan más ganancia.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" id="solucion">
+      <div class="contenedor">
+        <span class="etiqueta">La solución</span>
+        <h2>Un sistema web, a la medida del sauna</h2>
+        <p class="intro">Funciona en la computadora de recepción, en una tablet en la cafetería y en el celular del administrador. Estos son sus módulos:</p>
+        <div class="rejilla-3">
+          <article class="tarjeta modulo"><div class="icono-caja"><svg class="icono"><use href="#i-recepcion"/></svg></div><h3>Recepción e ingresos</h3>
+            <ul><li>Registro rápido del cliente (CI o nombre)</li><li>Entrada por horas, día completo o membresía</li><li>Manilla con código QR y casillero asignado</li><li>Aforo en tiempo real</li></ul></article>
+          <article class="tarjeta modulo lago"><div class="icono-caja"><svg class="icono"><use href="#i-casillero"/></svg></div><h3>Casilleros</h3>
+            <ul><li>Mapa de casilleros de varones y damas</li><li>Libre, ocupado, tiempo excedido o en mantenimiento</li><li>Registro de llaves o manillas perdidas</li></ul></article>
+          <article class="tarjeta modulo"><div class="icono-caja"><svg class="icono"><use href="#i-cafe"/></svg></div><h3>Cafetería y bar</h3>
+            <ul><li>Venta táctil por categorías</li><li>Cargo directo a la manilla del cliente</li><li>Alquiler de toallas, batas y sandalias</li></ul></article>
+          <article class="tarjeta modulo lago"><div class="icono-caja"><svg class="icono"><use href="#i-cocina"/></svg></div><h3>Cocina (comandas)</h3>
+            <ul><li>Los pedidos llegan solos a la pantalla de cocina</li><li>Pendiente → preparando → listo</li><li>Tiempo de cada pedido</li></ul></article>
+          <article class="tarjeta modulo"><div class="icono-caja"><svg class="icono"><use href="#i-calendario"/></svg></div><h3>Reservas</h3>
+            <ul><li>Saunas privados, jacuzzi y masajes</li><li>Agenda por hora sin cruces</li><li>Anticipo y confirmación</li></ul></article>
+          <article class="tarjeta modulo lago"><div class="icono-caja"><svg class="icono"><use href="#i-salida"/></svg></div><h3>Salida y cobro</h3>
+            <ul><li>Una sola cuenta: entrada + consumos + tiempo extra</li><li>Efectivo, QR, tarjeta o mixto</li><li>Libera el casillero al cobrar</li></ul></article>
+          <article class="tarjeta modulo"><div class="icono-caja"><svg class="icono"><use href="#i-inventario"/></svg></div><h3>Inventario</h3>
+            <ul><li>Stock que baja con cada venta</li><li>Aviso de productos por agotarse</li><li>Compras y proveedores</li></ul></article>
+          <article class="tarjeta modulo lago"><div class="icono-caja"><svg class="icono"><use href="#i-caja"/></svg></div><h3>Caja y reportes</h3>
+            <ul><li>Apertura y cierre de caja por turno</li><li>Ventas por método de pago</li><li>Horas pico, productos más vendidos</li></ul></article>
+          <article class="tarjeta modulo"><div class="icono-caja"><svg class="icono"><use href="#i-estrella"/></svg></div><h3>Clientes y membresías</h3>
+            <ul><li>Historial de visitas y consumo</li><li>Membresías mensuales y paquetes</li><li>Usuarios con permisos por cargo</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-alterna">
+      <div class="contenedor">
+        <span class="etiqueta">Cómo funciona un día</span>
+        <h2>Del ingreso a la salida, sin papeles</h2>
+        <ol class="flujo">
+          <li><div class="tarjeta"><strong>Llega el cliente</strong><p class="suave">Recepción lo busca por CI o lo registra en segundos.</p></div></li>
+          <li><div class="tarjeta"><strong>Recibe su manilla</strong><p class="suave">Con casillero asignado y la hora de ingreso.</p></div></li>
+          <li><div class="tarjeta"><strong>Consume con la manilla</strong><p class="suave">La cafetería escanea la manilla y carga el pedido.</p></div></li>
+          <li><div class="tarjeta"><strong>La cocina prepara</strong><p class="suave">El pedido aparece en la pantalla de cocina.</p></div></li>
+          <li><div class="tarjeta"><strong>Paga una sola cuenta</strong><p class="suave">Al salir se cobra todo y se libera el casillero.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="seccion" id="pantallas">
+      <div class="contenedor">
+        <span class="etiqueta">Maqueta navegable</span>
+        <h2>Así se verá el sistema</h2>
+        <p class="intro">Puede recorrer cada pantalla con datos de ejemplo. Nada se guarda: es para ver el diseño y el funcionamiento antes de construirlo.</p>
+        <div class="pantallas">
+          <a class="tarjeta pantalla-tarjeta" href="mockup.html#panel"><div class="miniatura"><div class="mini-fila" style="grid-template-columns:repeat(4,1fr)"><div class="mini-bloque c" style="height:34px"></div><div class="mini-bloque l" style="height:34px"></div><div class="mini-bloque o" style="height:34px"></div><div class="mini-bloque" style="height:34px"></div></div><div class="mini-fila" style="grid-template-columns:1.6fr 1fr"><div class="mini-bloque" style="height:80px"></div><div class="mini-bloque" style="height:80px"></div></div></div><strong>Panel general</strong><p class="suave">Aforo, ventas, casilleros y alertas del día.</p></a>
+          <a class="tarjeta pantalla-tarjeta" href="mockup.html#recepcion"><div class="miniatura"><div class="mini-barra" style="width:60%"></div><div class="mini-fila" style="grid-template-columns:1fr 1fr"><div class="mini-bloque" style="height:26px"></div><div class="mini-bloque" style="height:26px"></div></div><div class="mini-fila" style="grid-template-columns:repeat(3,1fr)"><div class="mini-bloque c" style="height:40px"></div><div class="mini-bloque" style="height:40px"></div><div class="mini-bloque" style="height:40px"></div></div><div class="mini-bloque l" style="height:22px"></div></div><strong>Recepción e ingreso</strong><p class="suave">Registro, tipo de entrada, manilla y casillero.</p></a>
+          <a class="tarjeta pantalla-tarjeta" href="mockup.html#casilleros"><div class="miniatura" style="grid-template-columns:repeat(6,1fr)"><div class="mini-bloque o"></div><div class="mini-bloque l"></div><div class="mini-bloque l"></div><div class="mini-bloque o"></div><div class="mini-bloque c"></div><div class="mini-bloque l"></div><div class="mini-bloque o"></div><div class="mini-bloque l"></div><div class="mini-bloque o"></div><div class="mini-bloque"></div><div class="mini-bloque l"></div><div class="mini-bloque o"></div></div><strong>Casilleros</strong><p class="suave">Mapa en vivo de casilleros de varones y damas.</p></a>
+          <a class="tarjeta pantalla-tarjeta" href="mockup.html#cafeteria"><div class="miniatura" style="grid-template-columns:1.5fr 1fr"><div class="mini-fila" style="grid-template-columns:1fr 1fr 1fr"><div class="mini-bloque"></div><div class="mini-bloque c"></div><div class="mini-bloque"></div><div class="mini-bloque"></div><div class="mini-bloque"></div><div class="mini-bloque c"></div></div><div class="mini-bloque l"></div></div><strong>Cafetería y bar</strong><p class="suave">Venta táctil con cargo a la manilla.</p></a>
+          <a class="tarjeta pantalla-tarjeta" href="mockup.html#cocina"><div class="miniatura" style="grid-template-columns:repeat(3,1fr)"><div class="mini-fila"><div class="mini-bloque c" style="height:40px"></div><div class="mini-bloque c" style="height:40px"></div></div><div class="mini-fila"><div class="mini-bloque l" style="height:40px"></div></div><div class="mini-fila"><div class="mini-bloque o" style="height:40px"></div><div class="mini-bloque o" style="height:40px"></div></div></div><strong>Cocina</strong><p class="suave">Comandas: pendiente, preparando, listo.</p></a>
+          <a class="tarjeta pantalla-tarjeta" href="mockup.html#salida"><div class="miniatura"><div class="mini-barra" style="width:40%"></div><div class="mini-bloque" style="height:70px"></div><div class="mini-fila" style="grid-template-columns:1fr 1fr"><div class="mini-bloque o" style="height:24px"></div><div class="mini-bloque l" style="height:24px"></div></div></div><strong>Salida y cobro</strong><p class="suave">Una cuenta con todo lo consumido.</p></a>
+        </div>
+        <p style="margin-top:20px"><a class="boton boton-lago" href="mockup.html">Abrir el sistema completo <svg class="icono icono-sm"><use href="#i-flecha"/></svg></a></p>
+      </div>
+    </section>
+
+    <section class="seccion seccion-alterna">
+      <div class="contenedor">
+        <span class="etiqueta">Tecnología</span>
+        <h2>Simple de usar, seguro por dentro</h2>
+        <div class="rejilla-2">
+          <div class="tarjeta"><h3>Cómo se usa</h3><ul class="suave" style="padding-left:18px;margin:0">
+            <li>Aplicación web: computadora, tablet o celular, sin instalar programas.</li>
+            <li>Manillas con código QR (o pulseras RFID si se prefiere).</li>
+            <li>Lector de QR en recepción y cafetería; impresora térmica de 80 mm para tickets.</li>
+            <li>Funciona en la red del local aunque se corte el internet.</li></ul></div>
+          <div class="tarjeta"><h3>Seguridad y respaldo</h3><ul class="suave" style="padding-left:18px;margin:0">
+            <li>Cada empleado con su usuario y permisos (recepción, cafetería, cocina, administración).</li>
+            <li>Registro de quién hizo cada cobro, anulación o descuento.</li>
+            <li>Respaldo automático diario de la información.</li>
+            <li>Preparado para sumar facturación electrónica (SIAT) más adelante.</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" id="plan">
+      <div class="contenedor">
+        <span class="etiqueta">Plan de trabajo</span>
+        <h2>12 semanas, entregado por partes</h2>
+        <p class="intro">Cada fase termina con algo que ya se puede usar en el sauna, para ir ajustando con el equipo.</p>
+        <div class="tarjeta cronograma">
+          <div class="fase"><strong>1. Análisis y diseño</strong><div class="barra"><span style="left:0;width:17%"></span></div><span class="chip chip-neutro">Sem. 1–2</span></div>
+          <div class="fase"><strong>2. Recepción, casilleros y salida</strong><div class="barra"><span style="left:17%;width:25%"></span></div><span class="chip chip-neutro">Sem. 3–5</span></div>
+          <div class="fase"><strong>3. Cafetería, cocina e inventario</strong><div class="barra"><span style="left:42%;width:25%"></span></div><span class="chip chip-neutro">Sem. 6–8</span></div>
+          <div class="fase"><strong>4. Reservas, caja y reportes</strong><div class="barra"><span style="left:67%;width:16%"></span></div><span class="chip chip-neutro">Sem. 9–10</span></div>
+          <div class="fase"><strong>5. Instalación y capacitación</strong><div class="barra"><span style="left:83%;width:17%"></span></div><span class="chip chip-neutro">Sem. 11–12</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-alterna" id="inversion">
+      <div class="contenedor">
+        <span class="etiqueta">Inversión</span>
+        <h2>Qué incluye la propuesta</h2>
+        <div class="rejilla-2">
+          <div class="tarjeta tabla-envoltura">
+            <table class="tabla inversion">
+              <thead><tr><th>Concepto</th><th class="derecha">Monto</th></tr></thead>
+              <tbody>
+                <tr><td>Desarrollo del sistema (9 módulos)</td><td class="derecha">A cotizar</td></tr>
+                <tr><td>Instalación en el local y capacitación del personal</td><td class="derecha">A cotizar</td></tr>
+                <tr><td>Soporte y mantenimiento mensual</td><td class="derecha">A cotizar</td></tr>
+                <tr><td>Equipos opcionales: lector QR, impresora térmica, manillas</td><td class="derecha">Según proveedor</td></tr>
+              </tbody>
+            </table>
+            <p class="nota" style="margin-top:14px">Los montos se definen tras la reunión de análisis, según la cantidad de casilleros, puntos de venta y usuarios.</p>
+          </div>
+          <div class="tarjeta"><h3 style="display:flex;gap:8px;align-items:center"><svg class="icono" style="color:var(--ok)"><use href="#i-escudo"/></svg> Incluido sin costo adicional</h3>
+            <ul class="suave" style="padding-left:18px;margin:0">
+              <li>3 meses de garantía después de la entrega.</li>
+              <li>Capacitación presencial para cada área.</li>
+              <li>Manual de uso con pantallas.</li>
+              <li>Carga inicial de productos, precios y casilleros.</li>
+              <li>Ajustes de diseño durante el desarrollo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <span>Propuesta preparada para <strong>Sauna Copacabana</strong> · Noviembre 2026</span>
+      <a href="mockup.html">Ver la maqueta del sistema →</a>
+    </div>
+  </footer>
+
+  <script>
+    // Tema claro/oscuro (se recuerda en este navegador si se puede)
+    (function () {
+      const raiz = document.documentElement;
+      try { const t = localStorage.getItem('sauna.tema'); if (t) raiz.dataset.theme = t; } catch (e) {}
+      document.querySelectorAll('[data-cambiar-tema]').forEach((b) => b.addEventListener('click', () => {
+        const oscuro = raiz.dataset.theme ? raiz.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        raiz.dataset.theme = oscuro ? 'light' : 'dark';
+        try { localStorage.setItem('sauna.tema', raiz.dataset.theme); } catch (e) {}
+      }));
+    })();
+  </script>
+</body>
+</html>
